@@ -14,12 +14,21 @@ import github.tornaco.span.handler.EmojiProvider;
 
 public class WeiboEmojiProvider implements EmojiProvider {
 
+    private WeiboEmojiProvider() {
+    }
+
     private static final Emoji[] DATA = new Emoji[]{
             new Emoji(R.drawable.d_feijie, "[费解]"),
             new Emoji(R.drawable.aini, "[爱你]")
     };
 
     private static final Map<String, Emoji> CACHED = new HashMap<>();
+
+    private static final WeiboEmojiProvider sMe = new WeiboEmojiProvider();
+
+    public static WeiboEmojiProvider getInstance() {
+        return sMe;
+    }
 
     @Override
     public Emoji getFromEmojiString(@NonNull String s) {
